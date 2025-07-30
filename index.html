@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RTBT Experience</title>
+  <!-- Import a modern sans‑serif font (Montserrat) for a clean look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Container for the starry background; stars are injected via JavaScript -->
+  <div id="star-container"></div>
+
+  <!-- On page load we show an overlay prompting the user to enter their
+       email address.  Once the visitor submits the form the overlay
+       disappears and the main content below becomes visible. -->
+  <div id="overlay" class="overlay">
+    <div class="overlay-container">
+      <p class="overlay-text">Enter your email address to start your RTBT experience</p>
+      <input type="email" id="email-input" class="email-input" placeholder="Email address" />
+      <button id="start-button" class="start-button">Start</button>
+      <small class="privacy">Privacy policy placeholder</small>
+    </div>
+  </div>
+
+  <!-- Main experience content: initially hidden until the user starts the experience -->
+  <div class="content">
+    <!-- Main headline -->
+    <h1 class="title">RTBT</h1>
+    <!-- Single-line tagline -->
+    <p class="tagline">Does your heart beat..? so does mine...</p>
+    <!-- Clickable blob in the centre; could link to another page in the future -->
+    <a href="#" class="blob-link" aria-label="Heart blob button">
+      <div class="blob"></div>
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
