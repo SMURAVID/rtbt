@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RTBT Experience</title>
-  <!-- Import a modern sans‑serif font (Montserrat) for a clean look -->
+  <!-- Import a modern sans-serif font (Montserrat) for a clean look -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -37,6 +37,35 @@
       <div class="blob"></div>
     </a>
   </div>
+
+  <!-- *** NEUER BLOCK für Make-Webhook *** -->
+  <script>
+    // 1) Hier deine echte Make-Webhook-URL reinsetzen:
+    const webhookUrl = 'https://hook.eu2.make.com/s2998ksadrhtxdu90m2dmszh26o7wyak';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document
+        .getElementById('start-button')
+        .addEventListener('click', async () => {
+          const email = document.getElementById('email-input').value.trim();
+          if (!email) {
+            return alert('Bitte eine gültige E-Mail eingeben.');
+          }
+          try {
+            await fetch(webhookUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email })
+            });
+            // Fehler ignorieren, Experience startet dennoch
+          } catch (err) {
+            console.error('Fehler beim Webhook-Call:', err);
+          }
+          // Anschließend übernimmt dein script.js das Ausblenden des Overlays
+        });
+    });
+  </script>
+  <!-- *** Ende Webhook-Block *** -->
 
   <script src="script.js"></script>
 </body>
