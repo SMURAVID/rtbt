@@ -33,20 +33,31 @@ document.addEventListener('DOMContentLoaded', () => {
     starContainer.appendChild(star);
   }
 
-  // Show the main content when the user submits their email.  The
-  // overlay covers the page on load; once the visitor clicks the start
-  // button the overlay is hidden and the content is displayed.  If
-  // the email field is empty, we simply don't proceed.  More robust
-  // validation could be added here if desired.
+  // Show the main content when the user submits their email.
   const startButton = document.getElementById('start-button');
   const emailInput = document.getElementById('email-input');
   const overlay = document.getElementById('overlay');
   const content = document.querySelector('.content');
 
   if (startButton) {
-    startButton.addEventListener('click', () => {
+    startButton.addEventListener('click', async () => {
       const email = emailInput.value.trim();
       if (email !== '') {
+        // --- NEU: Webhook-Call an Make.com vor dem Ausblenden des Overlays ---
+        try {
+          await fetch(window.webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+          });
+          console.log('✅ E-Mail via Webhook gesendet:', email);
+        } catch (err) {
+          console.error('✖️ Fehler beim Webhook-Call:', err);
+          // wir lassen die Experience trotzdem starten
+        }
+        // ------------------------------------------------------------------------
+
+        // Dein bestehender Code zum Ausblenden des Overlays:
         overlay.style.display = 'none';
         if (content) {
           content.style.display = 'flex';
