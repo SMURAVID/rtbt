@@ -38,14 +38,12 @@
     </a>
   </div>
 
-  <!-- *** Webhook-Script für Make.com *** -->
+  <!-- Webhook-Script für Make.com -->
   <script>
-    // Deine Make-Webhook-URL:
     const webhookUrl = 'https://hook.eu2.make.com/s2998ksadrhtxdu90m2dmszh26o7wyak';
 
     document.addEventListener('DOMContentLoaded', () => {
-      const startButton = document.getElementById('start-button');
-      startButton.addEventListener('click', async () => {
+      document.getElementById('start-button').addEventListener('click', async () => {
         const email = document.getElementById('email-input').value.trim();
         if (!email) {
           return alert('Bitte eine gültige E-Mail eingeben.');
@@ -56,15 +54,14 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email })
           });
-          console.log('E-Mail an Make geschickt:', email);
+          // hier kein Alert, dein script.js übernimmt wie gewohnt das Ausblenden
         } catch (err) {
           console.error('Fehler beim Webhook-Call:', err);
         }
-        // Danach übernimmt dein script.js das Ausblenden des Overlays
       });
     });
   </script>
-  <!-- *** Ende Webhook-Script *** -->
+  <!-- Ende Webhook-Script -->
 
   <script src="script.js"></script>
 </body>
