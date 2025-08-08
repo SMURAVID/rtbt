@@ -39,6 +39,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('overlay');
   const content = document.querySelector('.content');
 
+  // Elements for the privacy policy modal
+  const privacyLink = document.getElementById('privacy-link');
+  const privacyModal = document.getElementById('privacy-modal');
+  const privacyCloseBtn = document.getElementById('privacy-close');
+
+  // Show the privacy policy modal when the link is clicked
+  if (privacyLink && privacyModal) {
+    privacyLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      privacyModal.style.display = 'flex';
+    });
+  }
+  // Hide the privacy policy modal when the close button is clicked
+  if (privacyCloseBtn && privacyModal) {
+    privacyCloseBtn.addEventListener('click', () => {
+      privacyModal.style.display = 'none';
+    });
+  }
+
   /*
    * Configuration for our Make.com webhooks.  The tokens/URLs here are
    * placeholders – replace the strings with the actual webhook URLs you

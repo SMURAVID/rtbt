@@ -26,7 +26,46 @@
       <p class="overlay-text">Enter your email address to start your RTBT experience</p>
       <input type="email" id="email-input" class="email-input" placeholder="Email address" />
       <button id="start-button" class="start-button">Start</button>
-      <small class="privacy">Privacy policy placeholder</small>
+      <!-- Clickable link to open the privacy policy modal -->
+      <small class="privacy"><a href="#" id="privacy-link">Privacy Policy</a></small>
+    </div>
+  </div>
+
+  <!-- Modal for the privacy policy.  Hidden by default and shown when
+       the visitor clicks the Privacy Policy link.  See style.css for
+       styling. -->
+  <div id="privacy-modal" class="privacy-modal" style="display:none;">
+    <div class="privacy-content">
+      <h2>Privacy Policy</h2>
+      <p>
+        This RTBT experience collects and processes personal data to
+        guide you through a five‑question journey and create your
+        personalised Heart Roadmap.  We collect your email address,
+        name, language preference and the answers you provide to our
+        questions.  These details are used solely to generate and
+        deliver your Heart Roadmap, improve the quality of the
+        experience and to contact you with your results.
+      </p>
+      <p>
+        We process speech and text using third‑party services
+        (including OpenAI for language understanding and Whisper for
+        speech recognition, and ElevenLabs for text‑to‑speech) via
+        Make.com.  Your audio and text data may be transferred to
+        these providers for processing.  We store your information in
+        our data storage and Google Sheets for up to 30 days after
+        your session.  After this period your personal data will
+        either be deleted or anonymised.
+      </p>
+      <p>
+        We will never sell your personal data or share it with
+        third parties other than the service providers described
+        above.  You may request deletion of your data at any time
+        by contacting us at
+        <a href="mailto:privacy@rtbt.example">privacy@rtbt.example</a>.
+        By starting this experience you consent to the collection and
+        use of your data as outlined in this policy (consent version 1.0).
+      </p>
+      <button id="privacy-close" class="privacy-close">Close</button>
     </div>
   </div>
 
